@@ -10,3 +10,11 @@ install nodemon for auto-restart the server when change occurs
 
 Git intialised
 Created a remote repo and and pushed code into remote git repo
+
+Install Postman
+create a workspace/collectcion > url to GET Call
+Used user profile for GET and POST
+Done testing with postman
+Use of ? * + in routing 
+Practiced dynamic routing using ' : '
+Used req to log requests and params
