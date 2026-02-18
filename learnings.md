@@ -18,3 +18,11 @@ Done testing with postman
 Use of ? * + in routing 
 Practiced dynamic routing using ' : '
 Used req to log requests and params
+
+ Multiple Routes with next in the file Routes_And_Handlers.js
+ usage of next and playing with next.
+ 
+ Used Middlewares and usage of middlewares
+ Error Handling using Try and Catch
+ Error Handling using err
+ Learned (err,req,res,next)
