@@ -26,3 +26,13 @@ Used req to log requests and params
  Error Handling using Try and Catch
  Error Handling using err
  Learned (err,req,res,next)
+
+ Created a cluster in a mangoDB atlas.
+ Connected to the database using mongoose.
+ First connect DB then listen to server.
+
+ Created a user Schema using mongoose.Schema
+ Exported it to Model using mongoose.model(Name,Schema);
+
+ Created a /signup api
+ Tested with postman
