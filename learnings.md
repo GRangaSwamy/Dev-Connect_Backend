@@ -41,3 +41,6 @@ Used req to log requests and params
  Diff b/w json and js obj
  Add the express json middleware to app.
  Make signup api and use body of postman to send data dynamically
+ Learned GET API, fetched the data using Model.find({condition}).
+ fetched all data using Model.find({})
+ Learned Model.findOne() with duplicate documents

@@ -1,21 +1,12 @@
-require('../src/config/database');
+// require('../src/config/database');
 const express = require('express');
 const User = require('../src/models/user');
-
+const connectDB = require('./config/database');
 const app = express();
 
 app.use(express.json());  // Middleware to parse JSON request bodies
 app.post('/signup', async (req, res) => {
   console.log(req.body);
-  // const userObj = {
-  //   firstName: "Virat",
-  //   lastName: "Kohli",
-  //   email: "123@gmail.com",
-  //   password: "Esala Cup Namdu",
-  //   age: 34,
-  //   gender: "Male"
-  // };
-
   const user = new User(req.body);
   try{
     user.save();
@@ -25,9 +16,51 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+// Get user by firstName
+app.get('/user',async (req,res)=>{
+  const fs = req.body.firstName;
+  try{
+    const users = await User.find({firstName: fs});
+    res.send(users);
+  }catch(err){
+    res.status(500).send("Error fetching users: " + err.message);
+  }
 });
+
+// Get one user only by firstName
+app.get('/user/one',async (req,res)=>{
+  const {firstName} = req.query;
+  try{
+    const user = await User.findOne({firstName})
+    res.send(user);
+  }catch(err){
+    res.status(500).send("Error fetching user: " + err.message);
+  }
+});
+
+// Feed API - GET / feed -get all users from the database
+
+app.get("/feed",async (req,res)=>{
+  try{
+    const users = await User.find({});
+    res.send(users);
+  }catch(err){
+    res.status(500).send("Error fetching users: " + err.message);
+  }
+})
+
+connectDB().then(()=>{
+    console.log("Database connected successfully"); 
+    app.listen(3000,()=>{
+        console.log("Server is running on port 3000");
+    });
+}).catch((err)=>{
+    console.error("Database connection failed: ", err);
+});
+
+// app.listen(3000, () => {
+//   console.log("Server running on port 3000");
+// });
 
 // app.use('/greet',(req,res)=>{
 
