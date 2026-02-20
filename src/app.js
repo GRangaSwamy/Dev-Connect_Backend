@@ -4,19 +4,25 @@ const User = require('../src/models/user');
 
 const app = express();
 
+app.use(express.json());  // Middleware to parse JSON request bodies
 app.post('/signup', async (req, res) => {
-  const userObj = {
-    firstName: "Virat",
-    lastName: "Kohli",
-    email: "123@gmail.com",
-    password: "Esala Cup Namdu",
-    age: 34,
-    gender: "Male"
-  };
+  console.log(req.body);
+  // const userObj = {
+  //   firstName: "Virat",
+  //   lastName: "Kohli",
+  //   email: "123@gmail.com",
+  //   password: "Esala Cup Namdu",
+  //   age: 34,
+  //   gender: "Male"
+  // };
 
-  const user = new User(userObj);
-  await user.save();
-  res.send("User signed up successfully");
+  const user = new User(req.body);
+  try{
+    user.save();
+    res.status(201).send("User created successfully");
+  }catch(err){
+    res.status(400).send("Error creating user: " + err.message);
+  }
 });
 
 app.listen(3000, () => {

@@ -36,3 +36,8 @@ Used req to log requests and params
 
  Created a /signup api
  Tested with postman
+
+
+ Diff b/w json and js obj
+ Add the express json middleware to app.
+ Make signup api and use body of postman to send data dynamically
