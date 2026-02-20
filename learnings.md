@@ -44,3 +44,7 @@ Used req to log requests and params
  Learned GET API, fetched the data using Model.find({condition}).
  fetched all data using Model.find({})
  Learned Model.findOne() with duplicate documents
+
+ Learned Delete and Patch
+ Successfully excuted using Postman
+ And verified the changes in MongoDB
