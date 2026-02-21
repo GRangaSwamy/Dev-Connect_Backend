@@ -62,7 +62,7 @@ app.get('/feed', async (req, res) => {
 
 // Delete user by id
 app.delete('/user',async (req,res)=>{
-  const id = req.query.userId;
+  const id = req.body;
   try{
     const user = await User.findByIdAndDelete(id);
     res.send("User deleted successfully: " + user);
@@ -73,16 +73,36 @@ app.delete('/user',async (req,res)=>{
 
 // Patch data user
 app.patch('/user',async(req,res)=>{
-  const {_id} = req.query;
+  const {_id} = req.body;
   const data = req.body;
   try{
-    await User.findByIdAndUpdate(_id, req.body,{new:true});
+    const allowesUpdates = ["firstName","lastName","password","age","gender","photoURL","about","skills"];
+    const updates = Object.keys(data);
+    const isValidOperation = updates.every((update)=> allowesUpdates.includes(update));
+    const skills = data?.skills;
+    if(skills && skills.length > 5){
+      throw new Error("Skills cannot be more than 5");
+    }
+    if(!isValidOperation){
+      return res.status(400).send("Invalid updates!");
+    }
+    await User.findByIdAndUpdate(_id, req.body);
     res.send("User updated successfully");
   }catch(err){
     res.status(500).send("Error updating user: " + err.message);
   }
 })
 
+// Delete One User by Name
+app.delete('/user/one', async (req,res)=>{
+      try{
+        const {lastName} = req.body;
+        await User.deleteOne({lastName});
+        res.send("User deleted successfully");
+      }catch(err){
+        res.status(500).send("Error deleting user: " + err.message);  
+      }
+})
 // Connect DB & Start Server (ONLY ONCE)
 connectDB()
   .then(() => {

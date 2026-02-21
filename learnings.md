@@ -47,4 +47,10 @@ Used req to log requests and params
 
  Learned Delete and Patch
  Successfully excuted using Postman
- And verified the changes in MongoDB
+ And verified the changes in MongoDB.
+
+ Added the validation to schema
+ Data sanitization on patch request
+ -> Restricted to change email once created
+ -> Restricted to send minimum of 5 skills
+ -> Practiced API level Validation
