@@ -54,3 +54,5 @@ Used req to log requests and params
  -> Restricted to change email once created
  -> Restricted to send minimum of 5 skills
  -> Practiced API level Validation
+installed Validator library
+Tested email,StrongPassword,mobile etc using validator

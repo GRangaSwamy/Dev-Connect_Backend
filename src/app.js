@@ -1,5 +1,6 @@
 // require('../src/config/database');
 const express = require('express');
+// const validator = require('validator');
 const User = require('../src/models/user');
 const connectDB = require('./config/database');
 
