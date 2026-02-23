@@ -42,10 +42,9 @@ const userSchema = new mongoose.Schema({
     },
     gender : {
         type : String,
-        validate(value){
-            if(!["male","female","other"].includes(value.toLowerCase())){
-                throw new Error("Gender must be either male, female or other");
-            } 
+        enum :{
+            values:["male","female","Other"],
+            message : `${'VALUE'} is not a valid gender type`
         }
     },
     photoURL :{

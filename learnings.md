@@ -80,4 +80,7 @@ Keeping all api in file is bad practice
 So we are using Express.Router 
 Created a list of API and grouped them under each Router
 
-Implemented APIs for login, logout, profil/view and profile/edit and tested with postman
+Implemented APIs for login, logout, profil/view and profile/edit and tested with postman.
+
+Created a connection Request schema for storing our request
+Successfully send a connetion request 😀😀.
