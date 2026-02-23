@@ -56,3 +56,26 @@ Used req to log requests and params
  -> Practiced API level Validation
 installed Validator library
 Tested email,StrongPassword,mobile etc using validator
+
+Validated data in signup API
+Install bcrypt to hash the passwords
+Used Helper function to validate input data (utils/validation.js)
+
+
+Inatall cookie parser
+Send a dummy cookie to user
+craetea GET /profile API 
+install jsonwebtoken
+Login API, after email and pwd validation
+created a json token and send it to user.
+
+Used middlewar for authentication
+This is middle is used for all authentication methods like /profile,/ sendConnection request etc
+Also implemented a expiry of token using option expiresIn 
+
+Used a schema methods to generate JWT and to Validate the password those are associated with user.
+Now the code is modular, readable and maintanable.
+
+Keeping all api in file is bad practice 
+So we are using Express.Router 
+Created a list of API and grouped them under each Router
