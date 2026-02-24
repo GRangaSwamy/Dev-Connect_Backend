@@ -84,3 +84,8 @@ Implemented APIs for login, logout, profil/view and profile/edit and tested with
 
 Created a connection Request schema for storing our request
 Successfully send a connetion request 😀😀.
+
+created index in userSchema < mongo automatically creates index for unique fields >
+Need to know what, why and need of Indexs and Compond Indexs.
+We used $or query and $and query and Used "pre" function (Schema.pre)
+Used enum too
