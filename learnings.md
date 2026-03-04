@@ -89,3 +89,13 @@ created index in userSchema < mongo automatically creates index for unique field
 Need to know what, why and need of Indexs and Compond Indexs.
 We used $or query and $and query and Used "pre" function (Schema.pre)
 Used enum too
+
+Successfully develpoed request api that they can see and ignore/accept the request
+Used ref and populate for connection of tables
+
+Developed api for viewing requests from diffeent requests
+
+Developed a FEED api that get the feed to users with:
+    1. Users didnot get into the of one's who are:
+            send requests,accepted or ignored 
+    only new users are shown to users in feed

@@ -34,9 +34,9 @@ authRouter.post('/login', async (req, res) => {
       console.log(token);
       // Add token to cookie and send the response back to the user
       res.cookie("token",token);
-      res.send("Login Successful");
+      return res.send("Login Successful");
     }
-    res.send("Inavaid password");
+    return res.send("Inavaid password");
   } catch (err) {
     res.status(400).send("Error in login. Try again later");
   }
