@@ -31,21 +31,19 @@ authRouter.post('/login', async (req, res) => {
     if (isPwdValid) {
       //Create a JWT 
       const token = await user.getJWT();
-      console.log(token);
+      // console.log(token);
       // Add token to cookie and send the response back to the user
       res.cookie("token",token);
-      return res.send("Login Successful");
+      return res.send(user);
     }
-    return res.send("Inavaid password");
+    return res.status(400).send("Invalid password");
   } catch (err) {
     res.status(400).send("Error in login. Try again later");
   }
 });
 
-authRouter.post('/logout',async(req,res)=>{
-    res.cookie("token",null,{
-        expires : new Date(Date.now())
-    })
-    res.send("LogOut Successfull");
-})
+authRouter.post('/logout', async (req, res) => {
+    res.clearCookie("token");
+    res.send("Logout Successful");
+});
 module.exports = authRouter;

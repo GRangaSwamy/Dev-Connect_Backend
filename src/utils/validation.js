@@ -1,6 +1,6 @@
 const validator = require('validator');
 const validateSignUpData = (req)=>{
-    const{firstName, lastName, email, password} = req.body;
+    const{firstName, lastName, email, password,photoURL} = req.body;
     if(firstName && firstName.length < 3){
         throw new Error("First name must be at least 3 characters long");
     }

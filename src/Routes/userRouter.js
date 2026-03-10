@@ -50,7 +50,7 @@ userRoute.get('/user/feed',userAuth, async(req,res)=>{
         // We do not show :- own card to him, who he ignored, who he accepted and already sent to connection request
         const loggedInUser = req.user;
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
+        let limit = parseInt(req.query.limit) || 10;
         const skip = (page-1)*limit;
         limit = limit > 50 ? 50 : limit
         const connectionRequest = await ConnectionRequest.find({
@@ -71,7 +71,7 @@ userRoute.get('/user/feed',userAuth, async(req,res)=>{
                 { _id : {$ne : loggedInUser._id}}
             ]
         }).select(USER_SAFE_DATA).skip(skip).limit(limit)
-        res.send("FEED : "+user)
+        res.send(user)
     }catch(err){
 
         res.status(400).json({message:err.message})
