@@ -23,25 +23,22 @@ authRouter.post('/signup', async (req, res) => {
 authRouter.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email:email });
+    const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(400).send("Invalid email ID");
     }
-    const isPwdValid = await user.validatePassword(password)
+    const isPwdValid = await user.validatePassword(password);
     if (isPwdValid) {
-      //Create a JWT 
       const token = await user.getJWT();
-      // console.log(token);
-      // Add token to cookie and send the response back to the user
-      res.cookie("token",token);
+      res.cookie("token", token, {httpOnly: true,secure: true, sameSite: "none",  maxAge: 1000 * 60 * 60 * 24});
       return res.send(user);
     }
     return res.status(400).send("Invalid password");
+
   } catch (err) {
     res.status(400).send("Error in login. Try again later");
   }
 });
-
 authRouter.post('/logout', async (req, res) => {
     res.clearCookie("token");
     res.send("Logout Successful");
