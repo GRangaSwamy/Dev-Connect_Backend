@@ -14,8 +14,10 @@ app.set("trust proxy", 1);
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",
-    process.env.CLIENT_URL || "https://dev-connect-frontend-ey0q6egkr-grangaswamys-projects.vercel.app"
+    "http://localhost:5173",  // local dev
+    "https://dev-connect-frontend-cyan.vercel.app",
+    "https://dev-connect-frontend-git-main-grangaswamys-projects.vercel.app",
+    "https://dev-connect-frontend-faghk4acd-grangaswamys-projects.vercel.app"
   ],
   credentials: true
 }));

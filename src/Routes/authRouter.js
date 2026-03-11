@@ -31,13 +31,13 @@ authRouter.post('/login', async (req, res) => {
     if (isPwdValid) {
       const token = await user.getJWT();
       res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,      // must be true for HTTPS
-            sameSite: "none",  // required for cross-site cookies
-            maxAge: 1000 * 60 * 60 * 24 // 1 day
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production", // only true in production
+          sameSite: "none",
+          maxAge: 1000 * 60 * 60 * 24         
         });
-      return res.send(user);
-    }
+        return res.send(user);
+      }
     return res.status(400).send("Invalid password");
 
   } catch (err) {
