@@ -30,7 +30,12 @@ authRouter.post('/login', async (req, res) => {
     const isPwdValid = await user.validatePassword(password);
     if (isPwdValid) {
       const token = await user.getJWT();
-      res.cookie("token", token, {httpOnly: true,secure: true, sameSite: "none",  maxAge: 1000 * 60 * 60 * 24});
+      res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,      // must be true for HTTPS
+            sameSite: "none",  // required for cross-site cookies
+            maxAge: 1000 * 60 * 60 * 24 // 1 day
+        });
       return res.send(user);
     }
     return res.status(400).send("Invalid password");

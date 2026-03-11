@@ -13,7 +13,10 @@ app.use(cookieParser());
 app.set("trust proxy", 1);
 
 app.use(cors({
-  origin: ["http://localhost:5173", process.env.CLIENT_URL],
+  origin: [
+    "http://localhost:5173",
+    "https://dev-connect-frontend-ey0q6egkr-grangaswamys-projects.vercel.app"
+  ],
   credentials: true
 }));
 
